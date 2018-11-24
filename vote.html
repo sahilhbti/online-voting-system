@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Lobster" rel="stylesheet">
+
+<style>
+	.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+    text-align: center;
+    
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+</style>
+<script >
+
+</script>
+</head>
+<body ng-app = "header">
+    <div class="card center-block container-fluid" style="margin-top: 3vw;">
+    
+    		<h3 style="padding-top: 2vw;font-family: Black Han Sans;" id="x">ENTER DETAIL TO CAST YOUR VOTE</h3><hr>
+    		<h4 id="y" style="font-family: Lobster">Aadhar Card Number </h4> 
+    		<input style="width: 100%;box-sizing: border-box; padding: 1vw 1.2vw;margin: 1vw 0;" type="number" id="adhar_card" required="" >
+    		<h4 id="z" style="font-family: Lobster">Enter voter ID</h4>
+    		<input style="width: 100%;box-sizing: border-box; padding: 1vw 1.2vw;margin: 1vw 0;" type="number" id="voter_id" required="">
+    		<h4 id="a" style="font-family: Lobster">Enter Registered Phone Number</h4>
+    		<input style="width: 100%;box-sizing: border-box; padding: 1vw 1.2vw;margin: 1vw 0;" type="number" id="acc_count" required=""><br>
+    		<h4 id="b" style="font-family: Lobster">Enter Party you wish to vote</h4>
+    		 <select name="cars" style="width: 100%;box-sizing: border-box; padding: 1vw 1.2vw;margin: 1vw 0;" id ="pa"> 
+              <option value="volvo" >Bharatiya Janata Party(BJP)</option>
+            <option value="saab">Indian National Congress(INC)</option>
+              <option value="mercedes">Aam Aadmi Party(AAP)</option>
+            <input style="width: 100%;box-sizing: border-box; padding: 1vw 1.2vw;margin: 1vw 0;" type="number" id="otp" hidden>   
+  </select>
+ <b> <div id="hello" style="color: red;margin-bottom: 1vw;"></div> </b>
+ <b><div id = "check" style="color: red;margin-bottom: 1vw;"></div></b>
+ <h1 ><div id="success" style="color: red;"></div> </h1>
+ <div id="getotp" ></div> 
+    		<button style="width: 100%;box-sizing: border-box; padding: 1vw 1.2vw;margin: 1vw 0;" id  = "prefinal">Submit</button>
+    		<button style="width: 100%;box-sizing: border-box; padding: 1vw 1.2vw;margin: 1vw 0;"  id = "final"   hidden>Submit Your vote</button>
+    	
+    </div>    
+  <script>
+  	$("#prefinal").click(function()
+  	{
+        var add = $("#adhar_card").val();
+        var vot = $("#voter_id").val();
+        var acc = $("#acc_count").val();
+        $.post( 
+        	"xyz.php" , {
+         	  add : add , vot : vot , acc : acc } ,
+        	function(response)
+        	{
+        		 var k=response;
+        		  if(k.indexOf("1") != -1)
+            { 
+               $("#adhar_card").attr('readonly',true);
+               $("#voter_id").attr('readonly',true);
+              $('#acc_count').attr('readonly',true);
+              $('#pa').attr('readonly',true);
+              $('#hello').html('Enter Otp send to your Registered phone number to complete your vote');
+              $('#otp').attr('hidden',false);
+              $('#prefinal').attr('hidden', true);
+              $('#final').attr('hidden',false);
+              
+
+    }
+           else
+
+             {
+              $('#hello').html("Invalid Information or vote already done");
+          }
+        		
+        		
+        	}
+               
+        	);
+  	}); 	
+  </script>
+  <script>
+ 
+           $("#final").click(function()
+  	{
+  		     $('#hello').attr('hidden', true);
+  	         var party =$('#pa').find(":selected").text();
+       var add = $("#adhar_card").val();
+       var vot = $("#voter_id").val();
+       var acc = $("#acc_count").val();
+      
+       var otp = $("#otp").val();
+         $.post( 
+        	"abc.php" , {
+
+         	 otp : otp , add : add , vot : vot , acc : acc , party : party } ,
+        	function(response)
+        	{
+        		 var k=response;
+        		  if(k.indexOf("a") != -1)
+                   { 
+                    $("#adhar_card").attr('hidden',true);
+                     $("#voter_id").attr('hidden',true);
+                     $("#acc_count").attr('hidden',true);
+                     $("#pa").attr('hidden',true);   
+                     $("#x").attr('hidden',true);
+                     $("#y").attr('hidden',true);
+                      $("#z").attr('hidden',true);
+                       $("#a").attr('hidden',true);
+                       $("#b").attr('hidden',true);
+                       $("#final").attr('hidden',true);
+                       $("#otp").attr('hidden',true);
+                          $("#success").html("Vote successfully casted");
+                             $("#check").attr('hidden',true);
+                           
+
+                   }
+           else
+
+               {
+             	  $('#check').html("Invalid or empty OTP!!!!try again") ;             
+               }
+        		       			
+        	}
+               
+        	);
+     
+  	}
+  	);
+
+  </script>
+</body>
+</html>
