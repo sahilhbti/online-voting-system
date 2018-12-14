@@ -2,12 +2,14 @@
 <html>
 <head>
 	<title></title>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <link href="curr.css" rel="stylesheet">
 </head>
 <body >
- <div><canvas id="barChart" ></canvas></div>
+    
+    <div class="pieChart" style=" text-align: center">
+                <canvas id="barChart"></canvas>
+            </div>
 <script>
 	var canvas = document.getElementById("barChart");
 var ctx = canvas.getContext('2d');
@@ -15,9 +17,10 @@ var ctx = canvas.getContext('2d');
 // Global Options:
  Chart.defaults.global.defaultFontColor = 'black';
  Chart.defaults.global.defaultFontSize = 16;
+//  Chart.defaults.global.circumference = 2 * Math.PI;
 
 var data = {
-    labels: ["She returns it ", "She keeps it"],
+    labels: ["BJP ", "Congress"],
       datasets: [
         {
             fill: true,
@@ -37,7 +40,7 @@ var data = {
 var options = {
         title: {
                   display: true,
-                  text: 'What happens when you lend your favorite t-shirt to a girl ?',
+                  text: 'Current Vote Status',
                   position: 'top'
               },
         rotation: -0.7 * Math.PI
