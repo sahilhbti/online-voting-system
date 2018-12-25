@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <link href="curr.css" rel="stylesheet">
+</head>
+<body >
+    
+    <div class="pieChart" style=" text-align: center">
+                <canvas id="barChart"></canvas>
+            </div>
+<script>
+	var canvas = document.getElementById("barChart");
+var ctx = canvas.getContext('2d');
+
+// Global Options:
+ Chart.defaults.global.defaultFontColor = 'black';
+ Chart.defaults.global.defaultFontSize = 16;
+//  Chart.defaults.global.circumference = 2 * Math.PI;
+
+var data = {
+    labels: ["BJP ", "Congress"],
+      datasets: [
+        {
+            fill: true,
+            backgroundColor: [
+                'black',
+                'red'],
+            data: [5, 95],
+// Notice the borderColor 
+            borderColor:    ['black', 'black'],
+            borderWidth: [2,2]
+        }
+    ]
+};
+
+// Notice the rotation from the documentation.
+
+var options = {
+        title: {
+                  display: true,
+                  text: 'Current Vote Status',
+                  position: 'top'
+              },
+        rotation: -0.7 * Math.PI
+};
+
+
+// Chart declaration:
+var myBarChart = new Chart(ctx, {
+    type: 'pie',
+    data: data,
+    options: options
+});
+
+// Fun Fact: I've lost exactly 3 of my favorite T-shirts and 2 hoodies this way :|
+
+</script>
+
+</body>
+</html>
