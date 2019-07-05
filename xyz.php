@@ -21,7 +21,7 @@
       else 
       {
       	
-           $apiKey = urlencode('eoKMgGecrEQ-V6aZvhiGCIWobrVSW1iWl5hMolmvyV');
+           $apiKey = urlencode('IZq/OQ26W18-pBn3cKDVBj5j3MZQ3dTZHjdI8PIpqB');
   // Message details
   $numbers = array($z);
   $sender = urlencode('TXTLCL');
