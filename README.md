@@ -1,0 +1,2 @@
+# online-voting-system
+This is online voting system for giving vote online . It is single page application ,mobile responsive made using HTML , CSS , Javascript , bootstrap  , angularjs , php , mysql . Through this project we can give vote using aadhar card , voting id , phone ID . Otp is send to registered phone number for verification before vote is submit.It has many other detail of vote stats  like voting percentage current winner etc  . 
