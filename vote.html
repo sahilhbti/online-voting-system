@@ -19,10 +19,40 @@
     
 }
 
+.met{
+  color: white;
+}
+
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
+body{
+  background-color: gray;
+  margin: 0;
+  padding: 0;
+
+}
+
+.vote{
+  text-shadow: none;
+  border-radius: 15px;
+  color: blueviolet;
+  background-color: brown;
+}
+
+#prefinal{
+
+  text-shadow: none;
+  border-radius: 15px;
+  color: blueviolet;
+  background-color: brown;
+
+}
+
+.cast{
+  color: green;
+}
 </style>
 <script >
 
@@ -49,8 +79,8 @@
  <b><div id = "check" style="color: red;margin-bottom: 1vw;"></div></b>
  <h1 ><div id="success" style="color: red;"></div> </h1>
  <div id="getotp" ></div> 
-    		<button style="width: 100%;box-sizing: border-box; padding: 1vw 1.2vw;margin: 1vw 0;" id  = "prefinal">Submit</button>
-    		<button style="width: 100%;box-sizing: border-box; padding: 1vw 1.2vw;margin: 1vw 0;"  id = "final"   hidden>Submit Your vote</button>
+    		<button style="width: 100%;box-sizing: border-box; padding: 1vw 1.2vw;margin: 1vw 0;" id  = "prefinal"><span class="cast"> cast your</span> <span class="met">vote sincerely</span> </button>
+    		<button style="width: 100%;box-sizing: border-box; padding: 1vw 1.2vw;margin: 1vw 0;"  id = "final"   hidden >  <span class="vote"> cast your</span> vote</button>
     	
     </div>    
   <script>
